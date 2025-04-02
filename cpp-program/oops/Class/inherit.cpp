@@ -39,10 +39,10 @@
  };
 
  int main(){
-    // inherit * a=new inherit("gajendra","kmc",34);
-    // a->display();
-    // inherit s("gajendra","kailali",4);
-    // s.display();
+    inherit * a=new inherit("gajendra","kmc",34);
+    a->display();
+    inherit s("gajendra","kailali",4);
+    s.display();
      D s;
     s.disp();     
 

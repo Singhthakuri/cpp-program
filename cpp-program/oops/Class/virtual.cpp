@@ -2,12 +2,13 @@
 using namespace std;
 class Animal{
     public:
-        void display(){
+           virtual void display(){
         cout<<"hi i am animal parent class";
     }
 
     void output(){
         cout<<"animal is calling";
+        
     }
 
 };
@@ -25,6 +26,8 @@ class dog:public Animal{
 
 int main(){
     Animal* a=new dog();
+    dog* b=(dog*)new Animal();
+b->display();
     a->display();    
    return 0;
 }
