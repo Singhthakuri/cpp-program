@@ -9,7 +9,7 @@
     -------->Encapsulatio   --hides internal details
     --------->Inheritance      --Reusability of code
     ---------->Polynorphism        --Different behaviour for same function
-    ----------->Abstraction         -- Hides complexity
+    ----------->Abstraction          -- Hides complexity
 */
 // *----------------- This is simple Oops and class program using private and public class ---------
 
