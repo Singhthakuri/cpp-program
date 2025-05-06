@@ -3,6 +3,7 @@
         "*.ejs": "html",
         "*.asm": "bat",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "cmath": "cpp"
     }
 }
