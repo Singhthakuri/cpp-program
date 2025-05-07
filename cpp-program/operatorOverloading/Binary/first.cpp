@@ -116,51 +116,148 @@
 // }
 
 //using += operator without function 
-#include<iostream>
-using namespace std;
-class Hello{
-    int x;
-    int y;
-    public:
-    Hello(int x,int y):x(x),y(y){}
-    void operator+=(Hello s)
-    {
-        x+=s.x;
-        y+=s.y;
-    }
+// #include<iostream>
+// using namespace std;
+// class Hello{
+//     int x;
+//     int y;
+//     public:
+//     Hello(int x,int y):x(x),y(y){}
+//     void operator+=(Hello s)
+//     {
+//         x+=s.x;
+//         y+=s.y;
+//     }
 
-    void display(){
-        cout<<x<<","<<y;
-    }
-};
-int main(){
-    Hello s(1,0),t(2,0);
-    s+=t;
-    s.display();
-}
+//     void display(){
+//         cout<<x<<","<<y;
+//     }
+// };
+// int main(){
+//     Hello s(1,0),t(2,0);
+//     s+=t;
+//     s.display();
+// }
 
 //using friend functions 
-#include<iostream>
-using  namespace std;
-class Hello{
-    int x,y;
-    public:
-    Hello(int x,int y):x(x),y(y){}
-    friend Hello operator+=(Hello ,Hello);
-    void display(){
-        cout<<x<<" "<<y;
-    }
-};
-Hello operator+=(Hello s,Hello t){
-        Hello u(0,0);
-        u.x=s.x+=t.x;
-        u.y=s.y+=t.y;
-        return u;
-}
+// #include<iostream>
+// using  namespace std;
+// class Hello{
+//     int x,y;
+//     public:
+//     Hello(int x,int y):x(x),y(y){}
+//     friend Hello operator+=(Hello ,Hello);
+//     void display(){
+//         cout<<x<<" "<<y;
+//     }
+// };
+// Hello operator+=(Hello s,Hello t){
+//         Hello u(0,0);
+//         u.x=s.x+=t.x;
+//         u.y=s.y+=t.y;
+//         return u;
+// }
 
-int main()
-{
-    Hello s(1,2),t(2,6);
-    Hello u=s+=t;
-    u.display();
-}
+// int main()
+// {
+//     Hello s(1,2),t(2,6);
+//     Hello u=s+=t;
+//     u.display();
+// }
+
+//using ==
+// #include<iostream>
+// using namespace std;
+// class Obj{
+//     int x;
+//     public:
+//     Obj(int x):x(x){}
+//     bool operator==(Obj b){
+//         return x==b.x;
+//     }
+// };
+
+// int main(){
+//     Obj a(3),b(4);
+//     if(a==b)
+//     {
+//         cout<<"they are equal";
+//     }else
+//     {
+//         cout<<"they are not equal";
+//     }
+//     return 0;
+// }
+
+//using >
+// #include<iostream>
+// using namespace std;
+// class Obj{
+//     int x;
+//     public:
+//     Obj(int x):x(x){}
+//     bool operator>(Obj b){
+//         return x>b.x;
+//     }
+// };
+
+// int main(){
+//     Obj a(3),b(4);
+//     if(a>b)
+//     {
+//         cout<<"a is greatest";
+//     }else
+//     {
+//         cout<<"b is greatest";
+//     }
+//     return 0;
+// }
+
+//using != operator
+
+// #include<iostream>
+// using namespace std;
+// class Obj{
+//     int x;
+//     public:
+//     Obj(int x):x(x){}
+//     bool operator!=(Obj b){
+//         return x!=b.x;
+//     }
+// };
+
+// int main(){
+//     Obj a(3),b(4);
+//     if(a!=b)
+//     {
+//         cout<<"they are not equal";
+//     }else
+//     {
+//         cout<<"they are equal";
+//     }
+//     return 0;
+// }
+
+//using >=
+// #include<iostream>
+// using namespace std;
+// class Obj{
+//     int x;
+//     public:
+//     Obj(int x):x(x){}
+//     bool operator>=(Obj b){
+//         return x>=b.x;
+//     }
+// };
+
+// int main(){
+//     Obj a(3),b(4);
+//     if(a>=b)
+//     {
+//         cout<<"a is greatest";
+//     }else
+//     {
+//         cout<<"b is greatest";
+//     }
+//     return 0;
+// }
