@@ -1,3 +1,4 @@
+//the actual implementation of try and catch is when any case arise that is exceptional then i will be thrown from the try block to the catch block
 #include<iostream>
 using namespace std;
 int main()
