@@ -320,3 +320,61 @@ int main(){
     s.getdata();
     s.display();
 }
+
+Exceptional handling array bound divibe by 0
+#include<iostream>
+using namespace std;
+void displayRes(int arr[],int size){
+    int pos;
+        cout<<"Enter the position where you want to :";
+        cin>>pos;
+
+        try{
+             if(pos>size)
+        {
+            throw  string("Can't added to the index greater than array size");
+        }
+        int item;
+        cout<<"Enter item to add in the array: "<<endl;
+        cin>>item;
+        arr[pos]=item;
+        }catch(string msg)
+        {
+            cout<<msg;
+        }
+    }
+
+int main()
+{
+    int size;
+    cout<<"Enter the size of the Array: ";
+    cin>>size;
+    int arr[size]={};
+    displayRes(arr,size);
+}
+
+
+//Excaptional using divide by o
+#include<iostream>
+using namespace std;
+void display()
+{
+    int a,b;
+    cout<<"Enter value of a and b: ";
+    cin>>a>>b;
+    try{
+        if(b==0)
+        {
+            throw string("Cannot divide number by 0");
+        }
+        cout<<"Result of "<<a<< "divided by "<<b<< " is :"<<a/b<<endl;
+    }
+    catch(string msg){
+        cout<<msg<<endl;
+    }
+} 
+
+int main()
+{
+    display();
+}
