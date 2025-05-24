@@ -218,7 +218,8 @@ void userInput()
     cout << "Enter 5 to perform fee Payment" << endl;
     cout << "Enter 6 to check the Billing Status" << endl;
     cout << "Enter 7 to Display all the details of the Student" << endl;
-    cout << "Enter 8 to take a break from the System" << endl;
+    cout << "Enter 8 to read and write a details in the text file" << endl;
+    cout << "Enter 9 to take a break from the System" << endl;
 }
 
 class HeadOffics : public Administrator
