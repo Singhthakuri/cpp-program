@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <cmath>
 #include <string>
+#include<thread>
+#include <fstream>
 using namespace std;
 class Student
 {
@@ -46,6 +48,15 @@ public:
         cout << "student collage: " << collage << endl;
         cout << "student semester: " << current_sem << endl;
         cout << "student Roll no: " << collage_roll << endl;
+    }
+    void display(ostream &write)
+    {
+        write << "------------------Student Details---------------------" << endl;
+        write << "student name: " << name << endl;
+        write << "student faculty: " << faculty << endl;
+        write << "student collage: " << collage << endl;
+        write << "student semester: " << current_sem << endl;
+        write << "student Roll no: " << collage_roll << endl;
     }
 };
 // suppose if student have library card create a library class
@@ -89,6 +100,21 @@ public:
         }
     }
 
+    void displayBooks(ostream &write)
+    {
+        if (Books->empty())
+        {
+            write << "You have not taken any Books" << endl;
+            return;
+        }
+        write << "--------Books You have Taken--------" << endl;
+        int count = 1;
+        for (const auto &singleBool : *Books)
+        {
+            write << "->" << " " << singleBool << endl;
+        }
+    }
+
     void displayBooks()
     {
         if (Books->empty())
@@ -115,9 +141,10 @@ class Administrator : public Library
 {
 private:
     const float accountFee = 16000.00;
-    float amount=00.00;
-    float deu=16000.00;
+    float amount = 00.00;
+    float deu = 16000.00;
     float discount = 0.0;
+
 public:
     void payfee()
     {
@@ -131,18 +158,18 @@ public:
             float finalAmount = accountFee * (1 - discount);
             if (amount > finalAmount)
             {
-               deu=0.0;
+                deu = 0.0;
             }
             else
             {
-                cout << "You have to pay amount of " << finalAmount-amount<< endl;
-                deu=finalAmount-amount;
+                cout << "You have to pay amount of " << finalAmount - amount << endl;
+                deu = finalAmount - amount;
             }
 
             if (deu <= 0.0)
             {
-                deu=0.0;
-                cout << "All cleared"<<endl;
+                deu = 0.0;
+                cout << "All cleared" << endl;
             }
             else
             {
@@ -155,21 +182,29 @@ public:
             if (amount < accountFee)
             {
                 deu = accountFee - amount;
-                cout << "You have to pay amount of " << accountFee-amount << "  " << " Remaning dues " << deu<<endl;
+                cout << "You have to pay amount of " << accountFee - amount << "  " << " Remaning dues " << deu << endl;
             }
             else
             {
-                deu=0.0;
+                deu = 0.0;
                 cout << "No deu remaning all cleared" << endl;
             }
         }
     }
 
-    void BilingStatus(){
-            cout<<"lets watch to your Collage fee"<<endl;
-            cout<<"you have pay Rs "<<amount<<""<<endl;
-            cout<<"you have "<< deu<<"  dues to pay"<<endl;
-            cout<<"You have got "<<discount<<" Discount "<<endl;
+    void BilingStatus()
+    {
+        cout << "lets watch to your Collage fee" << endl;
+        cout << "you have pay Rs " << amount << "" << endl;
+        cout << "you have " << deu << "  dues to pay" << endl;
+        cout << "You have got " << discount << " Discount " << endl;
+    }
+
+    void BilingStatus(ostream &write)
+    {
+        write << "you have pay Rs " << amount << "" << endl;
+        write << "you have " << deu << "  dues to pay" << endl;
+        write << "You have got " << discount << " Discount " << endl;
     }
 };
 
@@ -186,20 +221,22 @@ void userInput()
     cout << "Enter 8 to take a break from the System" << endl;
 }
 
-class HeadOffics:public Administrator{ 
-    public:
-    void PrintStudentDetails(){
+class HeadOffics : public Administrator
+{
+public:
+    void PrintStudentDetails()
+    {
         Administrator::display();
         Administrator::displayBooks();
         Administrator::BilingStatus();
     }
 };
 
-
 int main()
 {
     HeadOffics usr;
     int choices;
+    string data;
     cout << "------------Welcome to this Complete Student Management System-------------" << endl;
     cout << "Let me Know what types of operations you want to do:" << endl;
     bool validcondition = true;
@@ -229,36 +266,69 @@ int main()
 
         case 5:
 
-                char val;
-                cout << "Does " << usr.name <<" "<< "Has got scholorshup(y/n)";
-                cin.get(val);
-                if (val == 'Y' || val == 'y')
-                {
-                    usr.scholorship();
-                }
-                else
-                {
-                    usr.noscholorship();
-                }
-                usr.payfee();
-                
-                break;
-                case 6:
-                    usr.display();
-                    usr.BilingStatus();
-                    break;
-                    case 7:
-                    cout<<"************************************************************************************************"<<endl;
-                    usr.PrintStudentDetails();
-                    break;
-            case 8:
-                cout << "Thanks for Exploring this System" << endl;
-                validcondition = false;
-                break;
-              
-            default:
-                cout << "Invalid choice please check the valid one:";
-                break;
+            char val;
+            cout << "Does " << usr.name << " " << "Has got scholorshup(y/n)";
+            cin.get(val);
+            if (val == 'Y' || val == 'y')
+            {
+                usr.scholorship();
             }
+            else
+            {
+                usr.noscholorship();
+            }
+            usr.payfee();
+
+            break;
+        case 6:
+            usr.display();
+            usr.BilingStatus();
+            break;
+        case 7:
+            cout << "************************************************************************************************" << endl;
+            usr.PrintStudentDetails();
+            break;
+        case 8:
+        {  
+            ofstream myfile("student.txt");
+           
+            if (myfile.is_open())
+            {
+                usr.display(myfile);
+                usr.displayBooks(myfile);
+                usr.BilingStatus(myfile);
+                myfile.close();
+                this_thread::sleep_for(chrono::seconds(2));
+            }else
+            {
+                cout<<"Something went wrong while writing......."<<endl;
+            }
+
+
+            ifstream readfile("student.txt");
+            if(readfile.is_open())
+            {       cout<< "\033[1;32m Displaying Students Details:-\033[0m"<<endl;
+                while(getline(readfile,data))
+                {
+                    cout<<data<<endl;
+                    this_thread::sleep_for(chrono::milliseconds(500));
+                }
+                readfile.close();
+            }else
+            {
+                cout<<"Something went wrong while reading a file "<<endl;
+            }
+            break;
+        }
+
+        case 9:
+            cout << "Thanks for Exploring this System" << endl;
+            validcondition = false;
+            break;
+
+        default:
+            cout << "Invalid choice please check the valid one:";
+            break;
         }
     }
+}

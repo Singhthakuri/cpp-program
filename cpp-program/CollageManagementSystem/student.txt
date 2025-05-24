@@ -1,0 +1,12 @@
+------------------Student Details---------------------
+student name: Gajendra singh thakuri
+student faculty: bsc csit
+student collage: Kmc
+student semester: third
+student Roll no: 45
+--------Books You have Taken--------
+-> operating system
+-> Cpp(oops)
+you have pay Rs 5000
+you have 0  dues to pay
+You have got 0.7 Discount 
