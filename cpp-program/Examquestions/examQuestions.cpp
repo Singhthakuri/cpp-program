@@ -378,3 +378,45 @@ int main()
 {
     display();
 }
+
+defining shapes to the base class and find area of trianlge and rectangle in the main functions 
+#include<iostream>
+using namespace std;
+class Shape{
+    public:
+   virtual void calculateArea()=0;
+};
+
+class Rectangle:public Shape{
+    int length,breadth;
+    public:
+    void calculateArea(){
+      cout<<"Enter length(cm): ";
+      cin>>length;
+      cout<<"Enter breadth(cm): ";
+      cin>>breadth;
+      cout<<"Area of Rectangle (cm): "<<length*breadth<<endl; 
+    }
+};
+
+class Triangle:public Shape{
+    int height,base;
+    public:
+    void calculateArea(){
+        cout<<"Enter the height of triangle(cm): ";
+        cin>>height;
+        cout<<"Enter the base of triangle(cm): ";
+        cin>>base;
+        cout<<"Area of triangle is (cm): "<<(height*base)*0.5<<endl;
+    }
+};
+
+int main()
+{
+    Rectangle s;
+    s.calculateArea();
+
+    Triangle t;
+    t.calculateArea();
+}
+

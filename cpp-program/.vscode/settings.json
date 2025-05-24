@@ -4,6 +4,7 @@
         "*.asm": "bat",
         "iostream": "cpp",
         "ostream": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "iosfwd": "cpp"
     }
 }

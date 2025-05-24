@@ -1,0 +1,3 @@
+Hello sir this is simple file opening and reading file program result.this is new added Line 
+this is new added Line 
+this is new added Line 
