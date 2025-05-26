@@ -420,3 +420,113 @@ int main()
     t.calculateArea();
 }
 
+
+
+read and write student name ,roll,age in the student.txt file and read it from the file
+#include<iostream>
+#include<fstream>
+#include<ios>
+using namespace std;
+class Student{
+    string name;
+    int age;
+    int roll;
+    public:
+    void getdata()
+    {
+        cout<<"Enter the name of student: ";
+        getline(cin,name);
+        cout<<"Enter age: ";
+        cin>>age;
+        cout<<"Enter Roll no: ";
+        cin>>roll;
+    }
+
+    void write(){
+        ofstream myfile("student.txt");
+        if(myfile.is_open())
+        {
+            myfile<<name<<endl;
+            myfile<<age<<endl;
+            myfile<<roll<<endl;
+            myfile.close();
+        }else
+        {
+            cout<<"error occur while opening file";
+        }
+    }
+
+
+    //if only write say in question this is enough jump to main function otherwise perform read operation
+
+    void read(){
+        ifstream myfile("student.txt");
+        string line;
+        if(myfile.is_open())
+        {   cout<<"Reading file"<<endl;
+            while(getline(myfile,line))
+            {
+                cout<<line<<endl;
+            }
+            myfile.close();
+
+        }else
+        {
+            cout<<"Error occur while reading file"<<endl;
+        }
+    }
+};
+
+int main(){
+    Student s;
+    s.getdata();
+    s.write();  //if say only write then no need to write code below this line 
+    s.read();
+}
+
+
+//same solution of above in another methods for reading and writing
+#include<iostream>
+#include<fstream>
+#include<ios>
+using namespace std;
+class Student{
+    string name;
+    int age;
+    int roll;
+    public:
+    void getdata()
+    {
+        cout<<"Enter the name of student: ";
+        getline(cin,name);
+        cout<<"Enter age: ";
+        cin>>age;
+        cout<<"Enter Roll no: ";
+        cin>>roll;
+    }
+
+    void write(fstream& file){
+          file<<name<<endl;
+          file<<age<<endl;
+          file<<roll<<endl;
+    }
+
+    //if only write say in question this is enough jump to main function otherwise perform read operation
+    void read(fstream& file){
+        string line;
+        file.seekg(0);
+        while(getline(file,line))
+            {
+                cout<<line<<endl;
+            }
+    }
+};
+
+int main(){
+    fstream myfile("student.txt", ios::in | ios::out);
+    Student s;
+    s.getdata();
+    s.write(myfile);  //you can check condition and customize also according to requiremet
+    s.read(myfile);  //if use on the same then must move the point to the top of the file using seekpg in methods
+    myfile.clear();
+}
