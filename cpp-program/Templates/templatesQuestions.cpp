@@ -1,37 +1,37 @@
-// simple template for generic data
+simple template for generic data
 
-//  #include<iostream>
-//  using namespace std;
-//  template <typename s, typename t>
-//  void sum(s x,t y)
-//  {
-//     cout<<x+int(y);
-//  }
+ #include<iostream>
+ using namespace std;
+ template <typename s, typename t>
+ void sum(s x,t y)
+ {
+    cout<<x+int(y);
+ }
 
-//  int main()
-//  {
-//     sum(3,'h');
-//  }
+ int main()
+ {
+    sum(3,'h');
+ }
 
-// multiples templates for different data types
+multiples templates for different data types
 
-// #include<iostream>
-// using namespace std;
-// template<typename s,typename t,typename u,typename v>  // first int,second float,third char ,fourth string
+#include<iostream>
+using namespace std;
+template<typename s,typename t,typename u,typename v>  // first int,second float,third char ,fourth string
 
-// void sum(s x,t y,u w,v z)
-// {
-//    cout<<x+y<<endl;
-//    cout<<w<<endl;
-//    cout<<z<<endl;
+void sum(s x,t y,u w,v z)
+{
+   cout<<x+y<<endl;
+   cout<<w<<endl;
+   cout<<z<<endl;
 
-// }
-// int main()
-// {
-//     sum(1,2.2,'h',"string");
-// }
+}
+int main()
+{
+    sum(1,2.2,'h',"string");
+}
 
-// templates class examples
+templates class examples
 
 #include <iostream>
 using namespace std;
